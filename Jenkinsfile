@@ -25,15 +25,6 @@ pipeline {
             }
         }
 
-	stage('Debug ESLint Plugins') {
- 		steps {
-		 // Check if eslint-plugin-react is installed
-		 bat '''
-		 set PATH=%NODEJS_HOME%;%PATH%
-		 npm list eslint-plugin-react || echo "eslint-plugin-react not found"
-		 '''
- 		}
- 	}
 
         stage('Lint') {
             steps {
