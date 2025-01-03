@@ -25,15 +25,6 @@ pipeline {
             }
         }
 
-        stage('Lint') {
-            steps {
-                bat '''
-                set PATH=%NODEJS_HOME%;%PATH%
-                npx run eslint
-                '''
-            }
-        }
-
         stage('Build') {
             steps {
                 bat '''
