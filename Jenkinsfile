@@ -20,7 +20,6 @@ pipeline {
             steps {
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
-		npm ci
   		npm install
                 '''
             }
