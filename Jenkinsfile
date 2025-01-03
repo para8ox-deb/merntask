@@ -29,7 +29,7 @@ pipeline {
             steps {
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
-                npx eslint .
+                npx run eslint
                 '''
             }
         }
