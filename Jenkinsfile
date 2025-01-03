@@ -5,8 +5,8 @@ pipeline {
     }
 
     environment {
-        NODEJS_HOME = 'C:\\Program Files\\nodejs'  
-        SONAR_SCANNER_PATH = 'C:\\Users\\Aakash\\Downloads\\sonar-scanner-cli-6.2.1.4610-windows-x64\\sonar-scanner-6.2.1.4610-windows-x64\\bin'
+        NODEJS_HOME = 'C:\Program Files\nodejs'  
+        SONAR_SCANNER_PATH = 'C:\Users\Aakash\Downloads\sonar-scanner-cli-6.2.1.4610-windows-x64\sonar-scanner-6.2.1.4610-windows-x64\bin'
     }
 
     stages {
@@ -21,6 +21,25 @@ pipeline {
                 bat '''
                 set PATH=%NODEJS_HOME%;%PATH%
                 npm install
+                '''
+            }
+        }
+
+	stage('Debug ESLint Plugins') {
+ 		steps {
+			 // Check if eslint-plugin-react is installed
+			 bat '''
+			 set PATH=%NODEJS_HOME%;%PATH%
+			 npm list eslint-plugin-react || echo "eslint-plugin-react not found"
+			 '''
+ 		}
+ 	}
+
+        stage('Lint') {
+            steps {
+                bat '''
+                set PATH=%NODEJS_HOME%;%PATH%
+                npm run lint
                 '''
             }
         }
