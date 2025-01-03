@@ -20,6 +20,12 @@ mongoose.connect(MONGO_URI)
         console.log("DB Connected successfully");
         app.listen(PORT, () => {
             console.log(`Server running at ${PORT}`);
+
+            // Set a timeout to close the server after 10 seconds (10000 ms)
+  setTimeout(() => {
+    console.log('Shutting down the server...');
+    process.exit(); // This will terminate the server
+  }, 3000); // 10 seconds delay before shutting down
         });
     })
     .catch((error) => {
